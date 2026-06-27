@@ -1,7 +1,7 @@
 package reglaud.cutscene.registry;
 
-import reglaud.cutscene.api.IAddStep;
 import reglaud.cutscene.api.ISetType;
+import reglaud.cutscene.api.IAddStep;
 import reglaud.cutscene.scene.SceneData;
 import reglaud.cutscene.scene.SceneStep;
 
@@ -19,7 +19,7 @@ public class Builder implements ISetType, IAddStep {
 
     @Override
     public IAddStep addStep(int duration, boolean playAtOnce, Consumer<Something> tick, Consumer<Something> update) {
-        SceneData.addStep(new SceneStep(duration, playAtOnce, tick, update));
+        sceneData.addStep(new SceneStep(duration, playAtOnce, tick, update));
         return this;
     }
 
