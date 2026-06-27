@@ -1,5 +1,6 @@
 package reglaud.cutscene.scene;
 
+import net.minecraft.client.gui.DrawContext;
 import reglaud.cutscene.api.ITickContext;
 import reglaud.cutscene.api.IUpdateContext;
 
@@ -13,8 +14,10 @@ public class Scene implements ITickContext, IUpdateContext {
     private int currentStepIndex = -1;
     private SceneStep currentStep;
     private int localTime;
-    private int globalTime = 0;
+    private float smoothLocalTime;
+    private int globalTime = -1;
     private int nextStepTime = 0;
+    private DrawContext drawContext;
 
 
     public Scene(SceneData sceneData) {
@@ -25,17 +28,26 @@ public class Scene implements ITickContext, IUpdateContext {
 
     public void tick() {
         globalTime += 1;
+        localTime += 1;
 
-        if (globalTime > nextStepTime) {
+        if (globalTime == nextStepTime) {
+            if (currentStepIndex == sceneSteps.size() - 1) {
+                deleteScene();
+                return;
+            }
             localTime = 0;
             currentStepIndex += 1;
             currentStep = sceneSteps.get(currentStepIndex);
-            nextStepTime = globalTime + currentStep.duration -1;
+            nextStepTime = globalTime + currentStep.duration;
         }
 
-        localTime += 1;
-
         currentStep.tick(this);
+    }
+
+    public void update(float tickDelta, DrawContext drawContext) {
+        smoothLocalTime = localTime + tickDelta;
+        this.drawContext = drawContext;
+        currentStep.update(this);
     }
 
 }
