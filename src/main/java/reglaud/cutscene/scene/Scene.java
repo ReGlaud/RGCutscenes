@@ -22,7 +22,7 @@ public class Scene implements ITickContext, IUpdateContext {
     private int nextStepTime = 0;
     private DrawContext drawContext;
     private Map<String, Object> memory = new HashMap<>();
-
+    private boolean alive = true;
 
     public Scene(SceneData sceneData) {
         this.ID = sceneData.getID();
@@ -36,6 +36,7 @@ public class Scene implements ITickContext, IUpdateContext {
 
         if (globalTime == nextStepTime) {
             if (currentStepIndex == sceneSteps.size() - 1) {
+                alive = false;
                 deleteScene();
                 return;
             }
@@ -54,8 +55,35 @@ public class Scene implements ITickContext, IUpdateContext {
         currentStep.update(this);
     }
 
+    @Override
     public void deleteScene() {
         SceneManager.deleteScene(this);
+    }
+
+    @Override
+    public boolean isAlive() {
+        return alive;
+    }
+
+    @Override
+    public void memoryAdd(String key, Object object) {
+        if (memory.containsKey(key)) {
+            throw new IllegalStateException("Нельзя добавить переменную с ключом '" + key + "', так как она уже существует. Для изменения переменной используйте memoryChange!");
+        }
+        memory.put(key, object);
+    }
+
+    @Override
+    public Object memoryGet(String key) {
+        return memory.get(key);
+    }
+
+    @Override
+    public void memoryChange(String key, Object object) {
+        if (!memory.containsKey(key)) {
+            throw new IllegalStateException("Нельзя изменить переменную с ключом '" + key + "', так как она еще не была добавлена через memoryAdd!");
+        }
+        memory.put(key, object);
     }
 
 }

@@ -36,9 +36,10 @@ public class SceneManager {
         }
     }
 
-    public static void startScene(SceneData sceneData) {
+    public static Scene startScene(SceneData sceneData) {
         Scene scene = new Scene(sceneData);
         addScene(scene);
+        return scene;
     }
 
     public static void startScene(String id) {
@@ -48,6 +49,10 @@ public class SceneManager {
         }
         Scene scene = new Scene(sceneData);
         addScene(scene);
+    }
+
+    public static void stopScene(Scene scene) {
+        scene.deleteScene();
     }
 
 }
