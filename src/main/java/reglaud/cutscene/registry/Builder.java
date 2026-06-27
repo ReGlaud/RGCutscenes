@@ -24,8 +24,8 @@ public class Builder implements ISetType, IAddStep {
     }
 
     @Override
-    public Scene build() {
-        // В разработке
+    public SceneData build() {
+        return sceneData;
     }
 
 }
