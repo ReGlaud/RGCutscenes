@@ -1,10 +1,13 @@
 package reglaud.cutscene.scene;
 
 import net.minecraft.client.gui.DrawContext;
+import reglaud.cutscene.SceneContollers.SceneManager;
 import reglaud.cutscene.api.ITickContext;
 import reglaud.cutscene.api.IUpdateContext;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Scene implements ITickContext, IUpdateContext {
 
@@ -18,6 +21,7 @@ public class Scene implements ITickContext, IUpdateContext {
     private int globalTime = -1;
     private int nextStepTime = 0;
     private DrawContext drawContext;
+    private Map<String, Object> memory = new HashMap<>();
 
 
     public Scene(SceneData sceneData) {
@@ -48,6 +52,10 @@ public class Scene implements ITickContext, IUpdateContext {
         smoothLocalTime = localTime + tickDelta;
         this.drawContext = drawContext;
         currentStep.update(this);
+    }
+
+    public void deleteScene() {
+        SceneManager.deleteScene(this);
     }
 
 }
