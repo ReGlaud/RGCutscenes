@@ -6,7 +6,7 @@ import java.util.List;
 public class SceneData {
 
     private final String TYPE;
-    private List<SceneSteps> sceneSteps = new ArrayList<>();
+    private final List<SceneStep> sceneSteps = new ArrayList<>();
 
 
     public SceneData(String type) {
@@ -14,7 +14,19 @@ public class SceneData {
     }
 
     public void addStep(SceneStep sceneStep) {
-        SceneSteps.add(sceneStep);
+        sceneSteps.add(sceneStep);
+    }
+
+    public String getType() {
+        return TYPE;
+    }
+
+    public List<SceneStep> getAllSteps() {
+        return sceneSteps;
+    }
+
+    public SceneStep getStep(int i) {
+        return sceneSteps.get(i);
     }
 
 }
