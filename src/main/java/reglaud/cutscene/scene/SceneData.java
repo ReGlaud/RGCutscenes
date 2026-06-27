@@ -5,28 +5,30 @@ import java.util.List;
 
 public class SceneData {
 
-    private final String TYPE;
+    private final String ID;
     private final List<SceneStep> sceneSteps = new ArrayList<>();
+    private final boolean haveEntity;
 
 
-    public SceneData(String type) {
-        TYPE = type;
+    public SceneData(String id, boolean haveEntity) {
+        this.ID = id;
+        this.haveEntity = haveEntity;
     }
 
     public void addStep(SceneStep sceneStep) {
         sceneSteps.add(sceneStep);
     }
 
-    public String getType() {
-        return TYPE;
+    public String getID() {
+        return ID;
     }
 
     public List<SceneStep> getAllSteps() {
         return sceneSteps;
     }
 
-    public SceneStep getStep(int i) {
-        return sceneSteps.get(i);
+    public boolean getHaveEntity() {
+        return haveEntity;
     }
 
 }
