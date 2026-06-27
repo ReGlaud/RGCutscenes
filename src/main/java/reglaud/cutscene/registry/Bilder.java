@@ -2,21 +2,24 @@ package reglaud.cutscene.registry;
 
 import reglaud.cutscene.api.IAddStep;
 import reglaud.cutscene.api.ISetType;
-import reglaud.cutscene.scene.CutsceneData;
+import reglaud.cutscene.scene.SceneData;
+import reglaud.cutscene.scene.SceneStep;
+
+import java.util.function.Consumer;
 
 public class Builder implements ISetType, IAddStep {
 
-    CutsceneData cutsceneData;
+    SceneData sceneData;
 
     @Override
     public IAddStep setType(String type){
-        cutsceneData = new CutsceneData(type);
+        sceneData = new SceneData(type);
         return this;
     }
 
     @Override
-    public IAddStep addStep(CutsceneStep step) {
-        cutsceneData.addStep(step);
+    public IAddStep addStep(int duration, boolean playAtOnce, Consumer<Something> tick, Consumer<Something> update) {
+        SceneData.addStep(new SceneStep(duration, playAtOnce, tick, update));
         return this;
     }
 
