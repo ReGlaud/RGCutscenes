@@ -1,7 +1,9 @@
 package reglaud.cutscene.SceneContollers;
 
 import net.minecraft.client.gui.DrawContext;
+import reglaud.cutscene.registry.SceneRegistry;
 import reglaud.cutscene.scene.Scene;
+import reglaud.cutscene.scene.SceneData;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -32,6 +34,20 @@ public class SceneManager {
         for (Scene scene : activeScenes) {
             scene.update(tickDelta, drawContext);
         }
+    }
+
+    public static void startScene(SceneData sceneData) {
+        Scene scene = new Scene(sceneData);
+        addScene(scene);
+    }
+
+    public static void startScene(String id) {
+        SceneData sceneData = SceneRegistry.getScene(id);
+        if (sceneData == null) {
+            throw new IllegalArgumentException("Сцены, имеющей id " + id + " не существует!");
+        }
+        Scene scene = new Scene(sceneData);
+        addScene(scene);
     }
 
 }
