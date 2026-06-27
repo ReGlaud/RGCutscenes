@@ -1,5 +1,6 @@
 package reglaud.cutscene.registry;
 
+import reglaud.cutscene.RGCutscene;
 import reglaud.cutscene.api.ISetType;
 import reglaud.cutscene.api.IAddStep;
 import reglaud.cutscene.api.ITickContext;
@@ -27,6 +28,8 @@ public class Builder implements ISetType, IAddStep {
 
     @Override
     public SceneData build() {
+        sceneData.freeze();
+        SceneRegistry.putNewSceneData(sceneData);
         return sceneData;
     }
 

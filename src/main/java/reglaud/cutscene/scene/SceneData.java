@@ -8,6 +8,7 @@ public class SceneData {
     private final String ID;
     private final List<SceneStep> sceneSteps = new ArrayList<>();
     private final boolean haveEntity;
+    private boolean frozen = false;
 
 
     public SceneData(String id, boolean haveEntity) {
@@ -16,6 +17,9 @@ public class SceneData {
     }
 
     public void addStep(SceneStep sceneStep) {
+        if (frozen) {
+            throw new IllegalStateException("Нельзя добавлять шаги в SceneData после того, как был вызван build()!");
+        }
         sceneSteps.add(sceneStep);
     }
 
@@ -29,6 +33,10 @@ public class SceneData {
 
     public boolean getHaveEntity() {
         return haveEntity;
+    }
+
+    public void freeze() {
+        this.frozen = true;
     }
 
 }
