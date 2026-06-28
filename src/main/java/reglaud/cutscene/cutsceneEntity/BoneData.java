@@ -2,7 +2,7 @@ package reglaud.cutscene.cutsceneEntity;
 
 import net.minecraft.util.math.Vec3d;
 
-class BoneData {
+public class BoneData {
 
     private Vec3d bonePos;
     private Vec3d boneRot;
