@@ -3,6 +3,7 @@ package reglaud.cutscene.scene;
 import net.minecraft.client.gui.DrawContext;
 import reglaud.cutscene.api.ITickContext;
 import reglaud.cutscene.api.IUpdateContext;
+import reglaud.cutscene.cutsceneEntity.CutsceneEntity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +23,7 @@ public class Scene implements ITickContext, IUpdateContext {
     private DrawContext drawContext;
     private Map<String, Object> memory = new HashMap<>();
     private boolean alive = true;
+    private CutsceneEntity cutsceneEntity;
 
     public Scene(SceneData sceneData) {
         this.ID = sceneData.getID();
@@ -92,6 +94,14 @@ public class Scene implements ITickContext, IUpdateContext {
     @Override
     public DrawContext getDrawContext() {
         return this.drawContext; // Твое поле DrawContext, которое ты сохраняешь в update()
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void putCutsceneEntity(CutsceneEntity cutscene) {
+        this.cutsceneEntity = cutscene;
     }
 
 }

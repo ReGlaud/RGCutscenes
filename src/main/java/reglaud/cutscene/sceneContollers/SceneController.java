@@ -1,6 +1,7 @@
 package reglaud.cutscene.sceneContollers;
 
 import net.minecraft.client.gui.DrawContext;
+import reglaud.cutscene.cutsceneEntity.CutsceneEntity;
 import reglaud.cutscene.scene.Scene;
 
 import java.util.List;
@@ -37,6 +38,14 @@ public class SceneController {
 
     public static List<Scene> getActiveScenes() {
         return activeScenes;
+    }
+
+    public static void putCutsceneEntity(String id, CutsceneEntity cutscene) {
+        for (Scene scene : activeScenes) {
+            if (scene.getID().equals(id)) {
+                scene.putCutsceneEntity(cutscene);
+            }
+        }
     }
 
 }
