@@ -4,7 +4,7 @@ import reglaud.cutscene.registry.SceneRegistry;
 import reglaud.cutscene.scene.Scene;
 import reglaud.cutscene.scene.SceneData;
 
-public class SceneManager {
+public class ClientSceneManager {
 
     public static Scene startScene(SceneData sceneData) {
         Scene scene = new Scene(sceneData);
