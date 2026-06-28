@@ -6,6 +6,7 @@ import net.minecraft.util.Identifier;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import reglaud.cutscene.test.Test;
 
 public class RGCutscene implements ModInitializer {
 	public static final String MOD_ID = "rgcutscene";
@@ -14,6 +15,8 @@ public class RGCutscene implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+
+		Test.register();
 
 	}
 

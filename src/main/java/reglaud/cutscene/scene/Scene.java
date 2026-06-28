@@ -50,6 +50,7 @@ public class Scene implements ITickContext, IUpdateContext {
     }
 
     public void update(float tickDelta, DrawContext drawContext) {
+        if (this.currentStep == null) return;
         smoothLocalTime = localTime + tickDelta;
         this.drawContext = drawContext;
         currentStep.update(this);
@@ -82,6 +83,16 @@ public class Scene implements ITickContext, IUpdateContext {
             throw new IllegalStateException("Нельзя изменить переменную с ключом '" + key + "', так как она еще не была добавлена через memoryAdd!");
         }
         memory.put(key, object);
+    }
+
+    @Override
+    public float getSmoothLocalTime() {
+        return this.smoothLocalTime; // Твоя переменная плавного времени
+    }
+
+    @Override
+    public DrawContext getDrawContext() {
+        return this.drawContext; // Твое поле DrawContext, которое ты сохраняешь в update()
     }
 
 }
