@@ -2,6 +2,7 @@ package reglaud.cutscene.client.events;
 
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
+import reglaud.cutscene.SceneContollers.SceneController;
 import reglaud.cutscene.SceneContollers.SceneManager;
 
 public class HUDRenderCallback {
@@ -14,7 +15,7 @@ public class HUDRenderCallback {
 
             if (client.player == null || client.world == null) return;
 
-            SceneManager.updateAll(tickDelta, drawContext);
+            SceneController.updateAll(tickDelta, drawContext);
 
         });
 

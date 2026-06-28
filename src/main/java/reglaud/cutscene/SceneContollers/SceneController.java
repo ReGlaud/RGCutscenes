@@ -1,39 +1,42 @@
 package reglaud.cutscene.SceneContollers;
 
-import reglaud.cutscene.SceneContollers.SceneManager;
-import reglaud.cutscene.registry.SceneRegistry;
+import net.minecraft.client.gui.DrawContext;
 import reglaud.cutscene.scene.Scene;
-import reglaud.cutscene.scene.SceneData;
 
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 
 public class SceneController {
 
-    public static Scene startScene(SceneData sceneData) {
-        Scene scene = new Scene(sceneData);
-        SceneManager.addScene(scene);
-        return scene;
+    public final static List<Scene> activeScenes = new CopyOnWriteArrayList<>();
+
+    public static void addScene(Scene scene) {
+        activeScenes.add(scene);
     }
 
-    public static void startScene(String id) {
-        SceneData sceneData = SceneRegistry.getScene(id);
-        if (sceneData == null) {
-            throw new IllegalArgumentException("Сцены, имеющей id " + id + " не существует!");
+    public static void deleteScene(Scene scene) {
+        activeScenes.remove(scene);
+    }
+
+    public static void deleteAllScenes() {
+        activeScenes.clear();
+    }
+
+    public static void tickAll() {
+        for(Scene scene : activeScenes) {
+            scene.tick();
         }
-        Scene scene = new Scene(sceneData);
-        SceneManager.addScene(scene);
     }
 
-    public static void stopScene(Scene scene) {
-        scene.deleteScene();
-        SceneManager.deleteScene(scene);
-    }
-
-    public static void stopAllScenes() {
-        for (Scene scene : SceneManager.getActiveScenes()) {
-            scene.deleteScene();
-            SceneManager.deleteAllScenes();
+    public static void updateAll(float tickDelta, DrawContext drawContext) {
+        for (Scene scene : activeScenes) {
+            scene.update(tickDelta, drawContext);
         }
+    }
+
+    public static List<Scene> getActiveScenes() {
+        return activeScenes;
     }
 
 }
