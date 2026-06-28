@@ -26,4 +26,8 @@ public class SceneRegistry {
         return REGISTERED_SCENES.get(id);
     }
 
+    public static Map<String, SceneData> getRegisteredScenes() {
+        return REGISTERED_SCENES;
+    }
+
 }

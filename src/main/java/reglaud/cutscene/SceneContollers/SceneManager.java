@@ -10,17 +10,17 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class SceneManager {
 
-    private static List<Scene> activeScenes = new CopyOnWriteArrayList<>();
+    private final static List<Scene> activeScenes = new CopyOnWriteArrayList<>();
 
-    public static void addScene(Scene scene) {
+    private static void addScene(Scene scene) {
         activeScenes.add(scene);
     }
 
-    public static void deleteScene(Scene scene) {
+    private static void deleteScene(Scene scene) {
         activeScenes.remove(scene);
     }
 
-    public static void deleteAllScenes() {
+    private static void deleteAllScenes() {
         activeScenes.clear();
     }
 
@@ -53,6 +53,14 @@ public class SceneManager {
 
     public static void stopScene(Scene scene) {
         scene.deleteScene();
+        deleteScene(scene);
+    }
+
+    public static void stopAllScenes() {
+        for (Scene scene : activeScenes) {
+            scene.deleteScene();
+            deleteAllScenes();
+        }
     }
 
 }
