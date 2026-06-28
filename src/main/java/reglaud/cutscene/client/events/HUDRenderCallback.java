@@ -2,8 +2,7 @@ package reglaud.cutscene.client.events;
 
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
-import reglaud.cutscene.SceneContollers.SceneController;
-import reglaud.cutscene.SceneContollers.SceneManager;
+import reglaud.cutscene.sceneContollers.SceneController;
 
 public class HUDRenderCallback {
 

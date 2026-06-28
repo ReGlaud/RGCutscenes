@@ -1,4 +1,4 @@
-package reglaud.cutscene.SceneContollers;
+package reglaud.cutscene.sceneContollers;
 
 import net.minecraft.client.gui.DrawContext;
 import reglaud.cutscene.scene.Scene;

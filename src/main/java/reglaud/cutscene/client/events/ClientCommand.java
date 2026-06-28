@@ -2,7 +2,7 @@ package reglaud.cutscene.client.events;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
-import reglaud.cutscene.SceneContollers.SceneManager;
+import reglaud.cutscene.sceneContollers.SceneManager;
 import reglaud.cutscene.registry.SceneRegistry;
 
 import static net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.argument;

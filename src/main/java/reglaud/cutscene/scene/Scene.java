@@ -1,7 +1,6 @@
 package reglaud.cutscene.scene;
 
 import net.minecraft.client.gui.DrawContext;
-import reglaud.cutscene.SceneContollers.SceneManager;
 import reglaud.cutscene.api.ITickContext;
 import reglaud.cutscene.api.IUpdateContext;
 
