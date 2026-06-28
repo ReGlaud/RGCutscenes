@@ -2,6 +2,7 @@ package reglaud.cutscene.client.events;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
+import reglaud.cutscene.SceneContollers.SceneController;
 import reglaud.cutscene.SceneContollers.SceneManager;
 import reglaud.cutscene.registry.SceneRegistry;
 
@@ -27,7 +28,7 @@ public class ClientCommand {
                                                     .executes(ctx -> {
                                                         String id = StringArgumentType.getString(ctx, "name");
                                                         try {
-                                                            SceneManager.startScene(id);
+                                                            SceneController.startScene(id);
                                                         } catch (Exception e) {
                                                             ctx.getSource().sendError(net.minecraft.text.Text.of("Сцена не найдена " + id));
                                                         }
@@ -38,7 +39,7 @@ public class ClientCommand {
                                     // 2. Ветка STOPALL: /reglaud cutscene stopAll
                                     .then(literal("stopAll")
                                             .executes(ctx -> {
-                                                SceneManager.stopAllScenes();
+                                                SceneController.stopAllScenes();
                                                 return 1;
                                             })
                                     )

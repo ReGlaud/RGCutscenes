@@ -56,9 +56,7 @@ public class Scene implements ITickContext, IUpdateContext {
     }
 
     @Override
-    public void deleteScene() {
-        SceneManager.deleteScene(this);
-    }
+    public void deleteScene() {}
 
     @Override
     public boolean isAlive() {
