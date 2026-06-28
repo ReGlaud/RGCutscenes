@@ -3,7 +3,10 @@
 	"package": "reglaud.cutscene.client.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"client": [
-
+		"CameraMixin",
+		"EntityRendererMixin",
+		"GameRendererMixin",
+		"PlayerEntityRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

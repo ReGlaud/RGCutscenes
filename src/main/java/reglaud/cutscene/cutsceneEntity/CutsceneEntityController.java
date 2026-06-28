@@ -2,6 +2,7 @@ package reglaud.cutscene.cutsceneEntity;
 
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
 
@@ -36,4 +37,16 @@ public class CutsceneEntityController {
         EntityRendererRegistry.register(ModEntities.CUTSCENE_ENTITY, CutsceneRenderer::new);
     }
 
+    // Методы игрока
+    public static void hidePlayerFromServerWorld(ServerWorld world, ServerPlayerEntity player) {
+        if (world == null || player == null) return;
+
+        world.getChunkManager().unloadEntity(player);
+    }
+
+    public static void showPlayerInServerWorld(ServerWorld world, ServerPlayerEntity player) {
+        if (world == null || player == null) return;
+
+        world.getChunkManager().loadEntity(player);
+    }
 }
