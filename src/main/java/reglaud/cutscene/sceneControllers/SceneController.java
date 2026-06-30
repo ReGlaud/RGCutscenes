@@ -1,4 +1,4 @@
-package reglaud.cutscene.sceneContollers;
+package reglaud.cutscene.sceneControllers;
 
 import net.minecraft.client.gui.DrawContext;
 import reglaud.cutscene.cutsceneEntity.CutsceneEntity;

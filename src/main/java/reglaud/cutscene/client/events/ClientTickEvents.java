@@ -1,6 +1,6 @@
 package reglaud.cutscene.client.events;
 
-import reglaud.cutscene.sceneContollers.SceneController;
+import reglaud.cutscene.sceneControllers.SceneController;
 
 public class ClientTickEvents {
 

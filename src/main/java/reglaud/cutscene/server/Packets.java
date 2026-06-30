@@ -6,10 +6,9 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
-import reglaud.cutscene.cutsceneEntity.CustomCamera;
 import reglaud.cutscene.cutsceneEntity.CutsceneEntity;
-import reglaud.cutscene.sceneContollers.ClientSceneManager;
-import reglaud.cutscene.sceneContollers.SceneController;
+import reglaud.cutscene.sceneControllers.ClientSceneManager;
+import reglaud.cutscene.sceneControllers.SceneController;
 
 import java.util.UUID;
 

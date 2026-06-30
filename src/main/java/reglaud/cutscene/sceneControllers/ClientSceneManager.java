@@ -1,4 +1,4 @@
-package reglaud.cutscene.sceneContollers;
+package reglaud.cutscene.sceneControllers;
 
 import reglaud.cutscene.registry.SceneRegistry;
 import reglaud.cutscene.scene.Scene;
